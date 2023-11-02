@@ -8,21 +8,49 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 }).addTo(map);
 
-var pickupPoint = L.marker([0, 0])
-  .addTo(map)
-  .bindPopup("You are here")
-  .openPopup();
+var userLocationMarker; // Define userLocationMarker globally
 
 function updateLocation(position) {
   var latitude = position.coords.latitude;
   var longitude = position.coords.longitude;
+  var accuracy = position.coords.accuracy; // Get accuracy
 
-  pickupPoint.setLatLng([latitude, longitude]).update();
-  map.setView([latitude, longitude], 15);
+  var signalStrength = accuracy; // Signal strength based on accuracy
+  var signalStrengthCategory, textColor;
 
-  // Update the <h5> element with the current coordinates
+  if (signalStrength <= 40) {
+    signalStrengthCategory = "Good";
+    textColor = "green";
+  } else if (signalStrength <= 80) {
+    signalStrengthCategory = "Fair";
+    textColor = "yellow";
+  } else {
+    signalStrengthCategory = "Bad";
+    textColor = "red";
+  }
+
   var coordinatesElement = document.getElementById("coordinates");
   coordinatesElement.textContent = `Latitude: ${latitude}, Longitude: ${longitude}`;
+
+  if (userLocationMarker) {
+    // If userLocationMarker exists, update its position and popup
+    userLocationMarker.setLatLng([latitude, longitude]);
+    userLocationMarker
+      .getPopup()
+      .setContent(
+        `Signal Strength: <span style="color: ${textColor};">${signalStrengthCategory}</span><br>You are here!`
+      );
+  } else {
+    // If userLocationMarker doesn't exist, create it
+    userLocationMarker = L.marker([latitude, longitude]).addTo(map);
+    userLocationMarker
+      .bindPopup(
+        `Signal Strength: <span style="color: ${textColor};">${signalStrengthCategory}</span><br>You are here!`
+      )
+      .openPopup();
+  }
+
+  map.setView([latitude, longitude], 15);
 
   $.ajax({
     url: "https://nominatim.openstreetmap.org/reverse",
@@ -78,20 +106,3 @@ var watchId = navigator.geolocation.watchPosition(
   handleError,
   options
 );
-
-function getPublicIPAddress() {
-  fetch("http://ifconfig.me/ip")
-    .then((response) => response.text())
-    .then((data) => {
-      const ipAddress = data.trim(); // Remove any leading/trailing whitespace
-      document.getElementById("ip-address").textContent = ipAddress;
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      document.getElementById("ip-address").textContent =
-        "Error fetching IP address";
-    });
-}
-
-// Call the function to get the public IP address
-getPublicIPAddress();
