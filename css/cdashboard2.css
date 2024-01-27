@@ -1,3 +1,6 @@
+body{
+    background-color: #ccefdc !important;
+}
 .panel {
   background-color: #03b14e;
   height: 15vh;
@@ -29,7 +32,7 @@
   font-size: 1.5rem;
   font-weight: 500;
   margin-left: 16px;
-  margin-top: 29px;
+  margin-top: 2vh;
 }
 
 .buttons {
@@ -60,7 +63,7 @@
 }
 
 .buttons .booking:hover {
-  background-color: #58595b;
+  background-color: #ccefdc;
 }
 
 .buttons .scan{
@@ -85,7 +88,7 @@
 }
 
 .buttons .scanqr:hover{
-    background-color: #58595B;
+    background-color: #ccefdc;
 }
 
 .footer {
