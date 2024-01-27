@@ -1,11 +1,11 @@
 .panel {
   background-color: #03b14e;
-  height: 5rem;
+  height: 15vh;
   border-bottom-left-radius: 3.125rem;
   border-bottom-right-radius: 3.125rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; /* Add this line to center items vertically */
   align-items: center;
   box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.8);
 }
@@ -34,9 +34,8 @@
 
 .buttons {
   display: flex;
-  flex-wrap: wrap; /* Added to allow buttons to wrap to the next line on smaller screens */
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-around; /* Distributes space around divs */
+  align-items: center; /* Centers vertically */
 }
 
 .buttons .book {
@@ -47,42 +46,65 @@
   font-weight: 500;
 }
 
-.buttons .booking,
-.buttons .scanqr {
+.buttons .booking {
   height: 77px;
   width: 77px;
-  margin: 10px; /* Added margin between buttons for better spacing on smaller screens */
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5); /* Shadow on all sides */
   border-radius: 20px;
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Centers horizontally */
   align-items: center;
   border: none;
   cursor: pointer;
   background-color: white;
 }
 
-.buttons .booking:hover,
-.buttons .scanqr:hover {
+.buttons .booking:hover {
   background-color: #58595b;
 }
 
-.scan {
-  text-align: center;
+.buttons .scan{
+    text-align: center;
 }
 
-.scan .scanlabel {
-  font-weight: 500;
+.scan .scanlabel{
+    font-weight: 500;
 }
 
-@media screen and (max-width: 768px) {
-  /* Adjust styles for smaller screens */
-  .panel {
-    height: auto; /* Adjust height as needed for smaller screens */
-  }
+.buttons .scanqr {
+  height: 77px;
+  width: 77px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5); /* Shadow on all sides */
+  border-radius: 20px;
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  background-color: white;
+}
 
-  .buttons .booking,
-  .buttons .scanqr {
-    width: 100%; /* Make buttons take full width on smaller screens */
-  }
+.buttons .scanqr:hover{
+    background-color: #58595B;
+}
+
+.footer {
+  background-color: #03b14e;
+  height: 10vh;
+  border-top-left-radius: 3.125rem;
+  border-top-right-radius: 3.125rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Add this line to center items vertically */
+  align-items: center;
+  box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.8);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.foot{
+    color: white;
+  margin-top: 0.625rem;
+  font-size: 2vh;
 }
