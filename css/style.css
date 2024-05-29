@@ -1,0 +1,20 @@
+body{
+    background-color: black !important;
+}
+
+.letter,
+.insides{
+    color: #FFC94A;
+}
+
+.content{
+ /* margin-left: 10vw;
+ margin-right: 10vw; */
+ margin-block: 10vh;
+ margin-inline: 10vw;
+}
+
+.content p{
+    line-height: 1.5;
+}
+

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/resource/heart-solid.svg    " type="image/png" />
+    <title>You are loved!</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/965a209c77.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <main>
+        <div class="content">
+            <p class="insides" id="letter">
+                Dear Ericka,<br><br>
+
+                Life has been tough. I am really proud of you for conquering it on your own. One of the most fearless
+                soldiers of God I've ever known. I know your life will be an unforgettable testimony one day. You are a
+                stunningly gorgeous, brilliant, and intelligent young woman. Everything has a purpose. If being with
+                your mother and father is something you have cried for, yet it is a blessing for us, your presence in
+                our family is definitely a blessing for me.<br><br>
+
+                You are loved. You are worthy. You are gorgeous. You matter.<br><br>
+
+                Don't let anyone in your household dictate you who you are, because you matter to our Heavenly Father.
+                Ericka, we love you for who you are. We're doing this for you because you deserve it. If they are
+                incapable of doing everything for you, Dona and I will. Because you matter.<br><br>
+
+                You are entering a new chapter in your life: would you want to invite us? Because we will appreciate it
+                5000 much!
+            </p>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const letterElement = document.getElementById("letter");
+            const letterText = letterElement.innerHTML;
+            letterElement.innerHTML = "";
+            let index = 0;
+
+            function typeLetter() {
+                if (index < letterText.length) {
+                    if (letterText[index] === "<") {
+                        // Find the end of the tag
+                        const endIndex = letterText.indexOf(">", index) + 1;
+                        letterElement.innerHTML += letterText.substring(index, endIndex);
+                        index = endIndex;
+                    } else {
+                        letterElement.innerHTML += letterText.charAt(index);
+                        index++;
+                    }
+                    setTimeout(typeLetter, 50); // Adjust typing speed here (milliseconds per character)
+                }
+            }
+
+            typeLetter();
+            letterElement.style.visibility = "visible"; // Show the text after typing
+        });
+    </script>
+
+</body>
+
+</html>
